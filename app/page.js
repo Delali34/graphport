@@ -419,6 +419,7 @@ const WorksSection = () => {
 
     return (
       <motion.div
+        id="work"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}

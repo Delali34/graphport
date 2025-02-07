@@ -995,7 +995,7 @@ const WebsitesSection = () => {
       image: "/chiaky.png",
       description: "Full-featured online store with custom product management",
       technologies: ["React", "Next.js", "Tailwind CSS", "NeonDB", "Prisma"],
-      stats: { visitors: "10K+", sales: "$500K+", uptime: "99.9%" },
+      stats: {},
     },
     {
       id: 2,

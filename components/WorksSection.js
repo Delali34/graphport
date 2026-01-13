@@ -216,13 +216,13 @@ const WorksSection = () => {
         id: 2,
         title: "Corporate Brochure",
         description: "Business Conference",
-        image: "/prohp.jpg",
+        image: "/new (1).jpg",
       },
       {
         id: 3,
         title: "Social Media Design",
         description: "Instagram Campaign",
-        image: "/tirza night 1.jpg",
+        image: "/new (2).jpg",
       },
       {
         id: 4,
@@ -276,7 +276,7 @@ const WorksSection = () => {
         id: 12,
         title: "Product Showcase",
         description: "Product Launch",
-        image: "/ade.jpg",
+        image: "/new (3).jpg",
       },
     ],
     projects: [

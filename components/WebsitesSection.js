@@ -23,9 +23,9 @@ const WebsitesSection = () => {
   const websites = [
     {
       id: 1,
-      title: "Portfolio Website",
-      url: "https://www.chiakyotuteye.com/",
-      image: "/chiaky.png",
+      title: "Real Estate Website",
+      url: "https://www.bellesonhomes.com/",
+      image: "/bel.png",
       description: "Modern corporate website with CMS integration",
       technologies: ["React", "Next.js", "Tailwind CSS", "NeonDB", "Prisma"],
       stats: {},
@@ -50,9 +50,9 @@ const WebsitesSection = () => {
     },
     {
       id: 3,
-      title: "Flairup Website",
-      url: "https://flairup.vercel.app/",
-      image: "/flairup.png",
+      title: "Travel Consulting Firm",
+      url: "https://www.btfeducationalconsult.com/",
+      image: "/build.png",
       description: "Personal blog website with CMS integration",
       technologies: ["React", "CSS", "AOS"],
       stats: {},

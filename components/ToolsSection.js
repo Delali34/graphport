@@ -3,7 +3,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-// Animation variants
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
@@ -17,6 +16,24 @@ const staggerChildren = {
     },
   },
 };
+
+const Skill = ({ tool }) => (
+  <div className="space-y-2">
+    <div className="flex items-center justify-between text-sm">
+      <span className="text-neutral-200">{tool.name}</span>
+      <span className="text-neutral-500">{tool.proficiency}%</span>
+    </div>
+    <div className="h-1 overflow-hidden rounded-full bg-white/10">
+      <motion.div
+        initial={{ width: 0 }}
+        whileInView={{ width: `${tool.proficiency}%` }}
+        viewport={{ once: true }}
+        transition={{ duration: 1, ease: "easeOut" }}
+        className="h-full rounded-full bg-violet-400"
+      />
+    </div>
+  </div>
+);
 
 const ToolsSection = () => {
   const tools = {
@@ -41,63 +58,42 @@ const ToolsSection = () => {
       id="services"
       initial="initial"
       whileInView="animate"
-      viewport={{ once: true, amount: 0.3 }}
+      viewport={{ once: true, amount: 0.2 }}
       variants={fadeIn}
-      className="min-h-screen py-20 px-4 sm:px-6 bg-gradient-to-b from-purple-900 to-black text-white"
+      className="border-t border-white/5 bg-[#0a0a0b] px-6 py-24 text-white sm:py-32"
     >
-      <motion.div variants={staggerChildren} className="max-w-6xl mx-auto">
-        <motion.h2
-          variants={fadeIn}
-          className="text-5xl sm:text-6xl font-bold mb-16 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600"
-        >
-          Tools & Skills
-        </motion.h2>
+      <motion.div variants={staggerChildren} className="mx-auto max-w-5xl">
+        <div className="mb-14 text-center">
+          <p className="mb-4 text-xs font-medium uppercase tracking-[0.3em] text-violet-400/90">
+            Capabilities
+          </p>
+          <motion.h2
+            variants={fadeIn}
+            className="font-display text-4xl font-semibold tracking-tight sm:text-5xl"
+          >
+            Tools &amp; Skills
+          </motion.h2>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-          {/* Design Tools */}
+        <div className="grid grid-cols-1 gap-14 md:grid-cols-2">
           <motion.div variants={fadeIn}>
-            <h3 className="text-3xl font-display mb-8 text-center">Design</h3>
+            <h3 className="mb-8 text-sm font-medium uppercase tracking-[0.2em] text-neutral-400">
+              Design
+            </h3>
             <div className="space-y-6">
               {tools.design.map((tool) => (
-                <div key={tool.name} className="space-y-2">
-                  <div className="flex justify-between items-center">
-                    <span className="font-display">{tool.name}</span>
-                    <span className="text-blue-400">{tool.proficiency}%</span>
-                  </div>
-                  <div className="h-2 bg-white/10 rounded-full overflow-hidden">
-                    <motion.div
-                      initial={{ width: 0 }}
-                      whileInView={{ width: `${tool.proficiency}%` }}
-                      transition={{ duration: 1, ease: "easeOut" }}
-                      className="h-full bg-gradient-to-r from-blue-500 to-purple-600"
-                    />
-                  </div>
-                </div>
+                <Skill key={tool.name} tool={tool} />
               ))}
             </div>
           </motion.div>
 
-          {/* Development Tools */}
           <motion.div variants={fadeIn}>
-            <h3 className="text-3xl font-display mb-8 text-center">
+            <h3 className="mb-8 text-sm font-medium uppercase tracking-[0.2em] text-neutral-400">
               Development
             </h3>
             <div className="space-y-6">
               {tools.development.map((tool) => (
-                <div key={tool.name} className="space-y-2">
-                  <div className="flex justify-between items-center">
-                    <span className="font-display">{tool.name}</span>
-                    <span className="text-blue-400">{tool.proficiency}%</span>
-                  </div>
-                  <div className="h-2 bg-white/10 rounded-full overflow-hidden">
-                    <motion.div
-                      initial={{ width: 0 }}
-                      whileInView={{ width: `${tool.proficiency}%` }}
-                      transition={{ duration: 1, ease: "easeOut" }}
-                      className="h-full bg-gradient-to-r from-blue-500 to-purple-600"
-                    />
-                  </div>
-                </div>
+                <Skill key={tool.name} tool={tool} />
               ))}
             </div>
           </motion.div>

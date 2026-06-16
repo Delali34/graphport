@@ -337,34 +337,38 @@ const WorksSection = () => {
 
   return (
     <motion.section
+      id="work"
       initial="initial"
       whileInView="animate"
-      viewport={{ once: true, amount: 0.3 }}
+      viewport={{ once: true, amount: 0.2 }}
       variants={fadeIn}
-      className="min-h-screen py-20 px-4 sm:px-6 bg-gradient-to-b from-black to-indigo-900 text-white"
+      className="border-t border-white/5 bg-[#0a0a0b] px-6 py-24 text-white sm:py-32"
     >
-      <motion.h2
-        variants={fadeIn}
-        className="text-5xl sm:text-6xl font-bold mb-16 text-center bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-500"
-      >
-        My Works
-      </motion.h2>
+      <div className="mx-auto mb-12 max-w-6xl text-center">
+        <p className="mb-4 text-xs font-medium uppercase tracking-[0.3em] text-violet-400/90">
+          Portfolio
+        </p>
+        <motion.h2
+          variants={fadeIn}
+          className="font-display text-4xl font-semibold tracking-tight sm:text-5xl"
+        >
+          My Works
+        </motion.h2>
+      </div>
 
-      <div className="flex justify-center gap-8 mb-12">
+      <div className="mb-12 flex justify-center gap-2">
         {["flyers", "projects"].map((tab) => (
-          <motion.button
+          <button
             key={tab}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
             onClick={() => setActiveTab(tab)}
-            className={`text-xl font-display uppercase tracking-wider px-6 py-2 rounded-full transition-colors duration-300 ${
+            className={`rounded-full border px-5 py-2 text-sm capitalize transition-colors duration-300 ${
               activeTab === tab
-                ? "bg-blue-500 text-white"
-                : "bg-transparent text-gray-400 hover:text-white"
+                ? "border-white/80 bg-white text-black"
+                : "border-white/15 text-neutral-400 hover:border-white/40 hover:text-white"
             }`}
           >
             {tab}
-          </motion.button>
+          </button>
         ))}
       </div>
 

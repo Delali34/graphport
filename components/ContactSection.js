@@ -3,7 +3,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-// Animation variants
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
@@ -18,47 +17,54 @@ const staggerChildren = {
   },
 };
 
+const inputClass =
+  "w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm placeholder:text-neutral-500 transition-colors focus:border-violet-400/60 focus:outline-none";
+
 const ContactSection = () => {
   return (
     <motion.section
       id="contacts"
       initial="initial"
       whileInView="animate"
-      viewport={{ once: true, amount: 0.3 }}
+      viewport={{ once: true, amount: 0.2 }}
       variants={fadeIn}
-      className="min-h-screen py-20 px-4 sm:px-6 bg-gradient-to-b from-indigo-900 to-black text-white"
+      className="border-t border-white/5 bg-[#0a0a0b] px-6 py-24 text-white sm:py-32"
     >
-      <motion.div variants={staggerChildren} className="max-w-4xl mx-auto">
-        <motion.h2
-          variants={fadeIn}
-          className="text-5xl sm:text-6xl font-bold mb-16 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600"
-        >
-          Let's Connect
-        </motion.h2>
+      <div className="mx-auto max-w-5xl">
+        <div className="mb-14">
+          <p className="mb-4 text-xs font-medium uppercase tracking-[0.3em] text-violet-400/90">
+            Contact
+          </p>
+          <motion.h2
+            variants={fadeIn}
+            className="font-display text-4xl font-semibold tracking-tight sm:text-5xl"
+          >
+            Let&apos;s Connect
+          </motion.h2>
+        </div>
 
-        <motion.div
-          variants={fadeIn}
-          className="grid grid-cols-1 md:grid-cols-2 gap-12"
-        >
-          {/* Contact Info */}
+        <motion.div variants={fadeIn} className="grid grid-cols-1 gap-12 md:grid-cols-2">
+          {/* Contact info */}
           <div className="space-y-8">
             <div>
-              <h3 className="text-2xl font-display mb-4">Contact Details</h3>
-              <div className="space-y-4">
+              <h3 className="mb-4 text-sm font-medium uppercase tracking-[0.2em] text-neutral-400">
+                Contact Details
+              </h3>
+              <div className="space-y-3 text-sm">
                 <p className="flex items-center gap-3">
-                  <span className="text-blue-400">Email:</span>
+                  <span className="text-neutral-500">Email</span>
                   <a
                     href="mailto:ernestanyomitse752@gmail.com"
-                    className="hover:text-blue-400 transition-colors"
+                    className="text-neutral-200 transition-colors hover:text-violet-300"
                   >
                     ernestanyomitse752@gmail.com
                   </a>
                 </p>
                 <p className="flex items-center gap-3">
-                  <span className="text-blue-400">Phone:</span>
+                  <span className="text-neutral-500">Phone</span>
                   <a
                     href="tel:+23320431-4170"
-                    className="hover:text-blue-400 transition-colors"
+                    className="text-neutral-200 transition-colors hover:text-violet-300"
                   >
                     +233 (20) 431-4170
                   </a>
@@ -67,61 +73,38 @@ const ContactSection = () => {
             </div>
 
             <div>
-              <h3 className="text-2xl font-display mb-4">Social Media</h3>
-              <div className="flex gap-4">
-                {["LinkedIn"].map((social) => (
-                  <motion.a
-                    key={social}
-                    whileHover={{ scale: 1.1 }}
-                    target="_blank"
-                    whileTap={{ scale: 0.95 }}
-                    href="https://www.linkedin.com/in/anyomitse-ernest-6934b8190/"
-                    className="hover:text-blue-400 transition-colors"
-                  >
-                    {social}
-                  </motion.a>
-                ))}
-              </div>
+              <h3 className="mb-4 text-sm font-medium uppercase tracking-[0.2em] text-neutral-400">
+                Social
+              </h3>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://www.linkedin.com/in/anyomitse-ernest-6934b8190/"
+                className="text-sm text-neutral-200 transition-colors hover:text-violet-300"
+              >
+                LinkedIn
+              </a>
             </div>
           </div>
 
-          {/* Contact Form */}
+          {/* Form */}
           <motion.form
             variants={fadeIn}
-            className="space-y-6"
+            className="space-y-4"
             onSubmit={(e) => e.preventDefault()}
           >
-            <div>
-              <input
-                type="text"
-                placeholder="Your Name"
-                className="w-full px-4 py-3 bg-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all"
-              />
-            </div>
-            <div>
-              <input
-                type="email"
-                placeholder="Your Email"
-                className="w-full px-4 py-3 bg-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all"
-              />
-            </div>
-            <div>
-              <textarea
-                placeholder="Your Message"
-                rows={4}
-                className="w-full px-4 py-3 bg-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all"
-              />
-            </div>
+            <input type="text" placeholder="Your Name" className={inputClass} />
+            <input type="email" placeholder="Your Email" className={inputClass} />
+            <textarea placeholder="Your Message" rows={4} className={inputClass} />
             <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="w-full py-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg font-display uppercase tracking-wider hover:opacity-90 transition-opacity"
+              whileTap={{ scale: 0.99 }}
+              className="w-full rounded-full bg-white py-3 text-sm font-medium text-black transition-opacity hover:opacity-90"
             >
               Send Message
             </motion.button>
           </motion.form>
         </motion.div>
-      </motion.div>
+      </div>
     </motion.section>
   );
 };

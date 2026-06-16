@@ -4,7 +4,6 @@ import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-// Animation variants
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
@@ -81,28 +80,33 @@ const WebsitesSection = () => {
     <motion.section
       initial="initial"
       whileInView="animate"
-      viewport={{ once: true, amount: 0.3 }}
+      viewport={{ once: true, amount: 0.2 }}
       variants={fadeIn}
-      className="min-h-screen py-20 px-4 sm:px-6 bg-gradient-to-b from-black to-indigo-900 text-white"
+      className="border-t border-white/5 bg-[#0a0a0b] px-6 py-24 text-white sm:py-32"
     >
-      <motion.h2
-        variants={fadeIn}
-        className="text-5xl sm:text-6xl font-bold mb-16 text-center bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-500"
-      >
-        Websites
-      </motion.h2>
+      <div className="mx-auto mb-14 max-w-6xl text-center">
+        <p className="mb-4 text-xs font-medium uppercase tracking-[0.3em] text-violet-400/90">
+          Development
+        </p>
+        <motion.h2
+          variants={fadeIn}
+          className="font-display text-4xl font-semibold tracking-tight sm:text-5xl"
+        >
+          Websites
+        </motion.h2>
+      </div>
 
       <motion.div
         variants={staggerChildren}
-        className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12"
+        className="mx-auto grid max-w-6xl grid-cols-1 gap-8 lg:grid-cols-2"
       >
         {websites.map((website) => (
           <motion.div
             key={website.id}
             variants={fadeIn}
-            className="group relative bg-white/5 rounded-xl overflow-hidden backdrop-blur-sm"
+            className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] transition-colors duration-300 hover:border-white/20"
           >
-            {/* Website Preview */}
+            {/* Preview */}
             <div className="relative aspect-video overflow-hidden">
               <Image
                 src={website.image}
@@ -110,48 +114,46 @@ const WebsitesSection = () => {
                 layout="fill"
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
             </div>
 
-            {/* Website Info */}
-            <div className="p-6 space-y-4">
-              <div className="flex justify-between items-start">
-                <h3 className="text-2xl font-display">{website.title}</h3>
+            {/* Info */}
+            <div className="space-y-4 p-6">
+              <div className="flex items-start justify-between gap-4">
+                <h3 className="font-display text-xl font-semibold">{website.title}</h3>
                 <a
                   href={website.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-400 hover:text-blue-300 transition-colors"
+                  className="shrink-0 text-sm text-violet-300 underline-offset-4 transition-colors hover:text-white hover:underline"
                 >
                   Visit Site
                 </a>
               </div>
 
-              <p className="text-gray-300">{website.description}</p>
+              <p className="text-sm text-neutral-400">{website.description}</p>
 
-              {/* Technologies Used */}
               <div className="flex flex-wrap gap-2">
                 {website.technologies.map((tech) => (
                   <span
                     key={tech}
-                    className="px-3 py-1 bg-white/10 rounded-full text-sm"
+                    className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-xs text-neutral-300"
                   >
                     {tech}
                   </span>
                 ))}
               </div>
 
-              {/* Stats */}
-              <div className="grid grid-cols-3 gap-4 pt-4 border-t border-white/10">
-                {Object.entries(website.stats).map(([key, value]) => (
-                  <div key={key} className="text-center">
-                    <div className="text-blue-400 font-bold">{value}</div>
-                    <div className="text-sm text-gray-400 capitalize">
-                      {key}
+              {Object.keys(website.stats).length > 0 && (
+                <div className="grid grid-cols-3 gap-4 border-t border-white/10 pt-4">
+                  {Object.entries(website.stats).map(([key, value]) => (
+                    <div key={key} className="text-center">
+                      <div className="font-semibold text-white">{value}</div>
+                      <div className="text-xs capitalize text-neutral-500">{key}</div>
                     </div>
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div>
+              )}
             </div>
           </motion.div>
         ))}

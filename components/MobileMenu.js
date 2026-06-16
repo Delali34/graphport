@@ -53,16 +53,16 @@ const MobileMenu = ({ isOpen, toggleMenu }) => {
             </svg>
           </motion.button>
 
-          <motion.nav className="mt-20 space-y-8">
-            {["About", "Work", "Services", "Contacts"].map((item, i) => (
+          <motion.nav className="mt-20 space-y-6">
+            {["About", "Work", "Reels", "Services", "Contacts"].map((item, i) => (
               <motion.a
                 key={item}
                 href={`#${item.toLowerCase()}`}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 20 }}
-                transition={{ delay: i * 0.1 }}
-                className="block text-3xl font-display hover:text-blue-400 transition-colors duration-300"
+                transition={{ delay: i * 0.08 }}
+                className="block font-display text-3xl text-neutral-200 transition-colors duration-300 hover:text-white"
                 onClick={toggleMenu}
               >
                 {item}
@@ -82,7 +82,7 @@ const MobileMenu = ({ isOpen, toggleMenu }) => {
                   key={social}
                   target="_blank"
                   href={`https://www.linkedin.com/in/anyomitse-ernest-6934b8190/`}
-                  className="block text-sm uppercase tracking-widest hover:text-blue-400 transition-colors duration-300"
+                  className="block text-sm uppercase tracking-widest text-neutral-300 transition-colors duration-300 hover:text-white"
                 >
                   {social}
                 </a>

@@ -6,10 +6,11 @@ import { motion, AnimatePresence } from "framer-motion";
 /*
  * Reels & Videos
  * --------------
- * Each item previews live from Instagram / TikTok inside a lightbox.
+ * Each item previews live from Instagram / TikTok / LinkedIn inside a lightbox.
  * To add or change a clip, edit the `reels` array below:
  *   - Instagram: copy the shortcode from the URL (.../reel/<code>/ or .../p/<code>/)
  *   - TikTok:    copy the numeric id from the URL (.../video/<id>)
+ *   - LinkedIn:  copy the numeric id from urn:li:activity:<id> in the post URL
  * Feel free to rename the `title` of each clip to something descriptive.
  */
 const reels = [
@@ -27,13 +28,19 @@ const reels = [
     videoId: "7519410303151459589",
     title: "Hephzibah Clothing",
   },
+  { id: 9, platform: "linkedin", activityId: "7445505166469947393", title: "LinkedIn Post" },
+  { id: 10, platform: "linkedin", activityId: "7442183093928488960", title: "LinkedIn Post" },
 ];
 
 const PROFILE_URL = "https://www.instagram.com/_g.y.l.a_/";
+const LINKEDIN_URL = "https://www.linkedin.com/company/106434191/";
 
 const embedUrl = (item) => {
   if (item.platform === "tiktok") {
     return `https://www.tiktok.com/embed/v2/${item.videoId}`;
+  }
+  if (item.platform === "linkedin") {
+    return `https://www.linkedin.com/embed/feed/update/urn:li:activity:${item.activityId}`;
   }
   const path = item.kind === "post" ? "p" : "reel";
   return `https://www.instagram.com/${path}/${item.code}/embed/`;
@@ -42,6 +49,9 @@ const embedUrl = (item) => {
 const externalUrl = (item) => {
   if (item.platform === "tiktok") {
     return `https://www.tiktok.com/@${item.handle}/video/${item.videoId}`;
+  }
+  if (item.platform === "linkedin") {
+    return `https://www.linkedin.com/feed/update/urn:li:activity:${item.activityId}`;
   }
   const path = item.kind === "post" ? "p" : "reel";
   return `https://www.instagram.com/${path}/${item.code}/`;
@@ -66,6 +76,12 @@ const TikTokIcon = (props) => (
   </svg>
 );
 
+const LinkedInIcon = (props) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+    <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.76-2.05C20.4 8.65 21 11 21 14.1V21h-4v-6.1c0-1.45-.03-3.3-2-3.3-2 0-2.3 1.57-2.3 3.2V21H9z" />
+  </svg>
+);
+
 const PlayIcon = (props) => (
   <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
     <path d="M8 5v14l11-7z" />
@@ -75,12 +91,14 @@ const PlayIcon = (props) => (
 const platformMeta = {
   instagram: { label: "Instagram", Icon: InstagramIcon },
   tiktok: { label: "TikTok", Icon: TikTokIcon },
+  linkedin: { label: "LinkedIn", Icon: LinkedInIcon },
 };
 
 const filters = [
   { key: "all", label: "All" },
   { key: "instagram", label: "Instagram" },
   { key: "tiktok", label: "TikTok" },
+  { key: "linkedin", label: "LinkedIn" },
 ];
 
 const ReelCard = ({ item, onOpen }) => {
@@ -117,6 +135,7 @@ const ReelCard = ({ item, onOpen }) => {
 const ReelModal = ({ item, onClose }) => {
   const { label } = platformMeta[item.platform];
   const isTikTok = item.platform === "tiktok";
+  const isLinkedIn = item.platform === "linkedin";
 
   return (
     <motion.div
@@ -132,7 +151,7 @@ const ReelModal = ({ item, onClose }) => {
         exit={{ scale: 0.96, opacity: 0 }}
         transition={{ type: "spring", stiffness: 320, damping: 30 }}
         onClick={(e) => e.stopPropagation()}
-        className="w-full max-w-[400px]"
+        className={`w-full ${isLinkedIn ? "max-w-[550px]" : "max-w-[400px]"}`}
       >
         <div
           className={`overflow-hidden rounded-2xl border border-white/10 ${
@@ -143,9 +162,11 @@ const ReelModal = ({ item, onClose }) => {
             key={item.id}
             src={embedUrl(item)}
             title={item.title}
-            className="h-[78vh] max-h-[720px] w-full"
+            className={`w-full ${
+              isLinkedIn ? "h-[72vh] max-h-[640px]" : "h-[78vh] max-h-[720px]"
+            }`}
             loading="lazy"
-            scrolling="no"
+            scrolling={isLinkedIn ? "yes" : "no"}
             allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
             allowFullScreen
           />
@@ -218,23 +239,36 @@ const ReelsSection = () => {
               Reels &amp; Videos
             </motion.h2>
             <motion.p variants={fadeIn} className="mt-4 text-neutral-400">
-              Short-form content I&apos;ve designed and edited — previewing live from
-              Instagram &amp; TikTok. Tap any clip to play it right here.
+              Short-form content I&apos;ve created and edited — previewing live from
+              Instagram, TikTok &amp; LinkedIn. Tap any clip to play it right here.
             </motion.p>
-            <motion.a
+            <motion.div
               variants={fadeIn}
-              href={PROFILE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-3 inline-flex items-center gap-1.5 text-sm text-neutral-300 underline-offset-4 transition-colors hover:text-white hover:underline"
+              className="mt-3 flex flex-wrap items-center gap-4"
             >
-              <InstagramIcon className="h-4 w-4" />
-              @_g.y.l.a_
-            </motion.a>
+              <a
+                href={PROFILE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-sm text-neutral-300 underline-offset-4 transition-colors hover:text-white hover:underline"
+              >
+                <InstagramIcon className="h-4 w-4" />
+                @_g.y.l.a_
+              </a>
+              <a
+                href={LINKEDIN_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-sm text-neutral-300 underline-offset-4 transition-colors hover:text-white hover:underline"
+              >
+                <LinkedInIcon className="h-4 w-4" />
+                LinkedIn
+              </a>
+            </motion.div>
           </div>
 
           {/* Filters */}
-          <motion.div variants={fadeIn} className="flex gap-2">
+          <motion.div variants={fadeIn} className="flex flex-wrap gap-2">
             {filters.map((f) => (
               <button
                 key={f.key}

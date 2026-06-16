@@ -13,9 +13,9 @@ const geistMono = localFont({
 });
 
 export const metadata = {
-  title: "Ernest Delali",
+  title: "Ernest Delali — Content & Growth",
   description:
-    "I am a passionate creative designer with a keen eye for design, aesthetics, and storytelling. My work is driven by the need to create visually stunning and impactful experiences.",
+    "Content creator, short-form video editor and social media manager. I build AI-powered content systems and grow audiences across TikTok, Instagram and LinkedIn.",
   Image: "/public/imaged.jpeg",
 };
 

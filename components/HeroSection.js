@@ -20,7 +20,7 @@ const staggerChildren = {
   },
 };
 
-const navItems = ["About", "Work", "Reels", "Services", "Contacts"];
+const navItems = ["About", "Reels", "Social", "Toolkit", "Contacts"];
 
 const HeroSection = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -107,15 +107,15 @@ const HeroSection = () => {
           variants={fadeIn}
           className="mb-6 text-xs uppercase tracking-[0.4em] text-violet-300/90"
         >
-          Designer &amp; Developer
+          Content · Social · Growth
         </motion.p>
 
         <motion.h1 className="font-craft text-6xl font-bold uppercase leading-[0.9] tracking-tighter sm:text-7xl md:text-8xl xl:text-9xl">
           <motion.span variants={fadeIn} className="block">
-            Creative
+            Content
           </motion.span>
           <motion.span variants={fadeIn} className="block text-neutral-400">
-            Designer
+            &amp; Growth
           </motion.span>
         </motion.h1>
 
@@ -123,16 +123,16 @@ const HeroSection = () => {
           variants={fadeIn}
           className="mt-8 max-w-md text-balance text-neutral-300"
         >
-          Branding, graphic design, web &amp; social media — crafting visually
-          striking, impactful experiences.
+          Short-form video, social media and AI-powered content systems —
+          turning ideas into content that reaches thousands.
         </motion.p>
 
         <motion.div variants={fadeIn} className="mt-10 flex items-center gap-3">
           <a
-            href="#work"
+            href="#reels"
             className="rounded-full bg-white px-6 py-3 text-sm font-medium text-black transition-opacity hover:opacity-90"
           >
-            View Work
+            View Reels
           </a>
           <a
             href="#contacts"

@@ -86,14 +86,18 @@ const WebsitesSection = () => {
     >
       <div className="mx-auto mb-14 max-w-6xl text-center">
         <p className="mb-4 text-xs font-medium uppercase tracking-[0.3em] text-violet-400/90">
-          Development
+          Builds
         </p>
         <motion.h2
           variants={fadeIn}
           className="font-display text-4xl font-semibold tracking-tight sm:text-5xl"
         >
-          Websites
+          Web &amp; Systems
         </motion.h2>
+        <p className="mx-auto mt-4 max-w-xl text-neutral-400">
+          I don&apos;t just make content — I build the tools and sites behind it.
+          A few products I&apos;ve shipped end to end.
+        </p>
       </div>
 
       <motion.div

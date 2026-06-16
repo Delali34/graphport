@@ -56,15 +56,16 @@ const SocialMediaSection = () => {
 
   return (
     <motion.section
+      id="social"
       initial="initial"
       whileInView="animate"
       viewport={{ once: true, amount: 0.2 }}
       variants={fadeIn}
       className="border-t border-white/5 bg-[#0a0a0b] px-6 py-24 text-white sm:py-32"
     >
-      <div className="mx-auto mb-14 max-w-6xl text-center">
+      <div className="mx-auto mb-14 max-w-2xl text-center">
         <p className="mb-4 text-xs font-medium uppercase tracking-[0.3em] text-violet-400/90">
-          Management
+          Growth &amp; Management
         </p>
         <motion.h2
           variants={fadeIn}
@@ -72,6 +73,10 @@ const SocialMediaSection = () => {
         >
           Social Media
         </motion.h2>
+        <motion.p variants={fadeIn} className="mt-4 text-neutral-400">
+          Accounts I run end to end — strategy, content, publishing and
+          measurable growth across Instagram and TikTok.
+        </motion.p>
       </div>
 
       <motion.div

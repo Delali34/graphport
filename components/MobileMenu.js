@@ -54,7 +54,7 @@ const MobileMenu = ({ isOpen, toggleMenu }) => {
           </motion.button>
 
           <motion.nav className="mt-20 space-y-6">
-            {["About", "Work", "Reels", "Services", "Contacts"].map((item, i) => (
+            {["About", "Reels", "Social", "Toolkit", "Contacts"].map((item, i) => (
               <motion.a
                 key={item}
                 href={`#${item.toLowerCase()}`}

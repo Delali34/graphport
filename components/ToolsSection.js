@@ -37,25 +37,38 @@ const Skill = ({ tool }) => (
 
 const ToolsSection = () => {
   const tools = {
-    design: [
-      { name: "Adobe Photoshop", proficiency: 90 },
-      { name: "Adobe Premier Pro", proficiency: 80 },
-      { name: "Figma", proficiency: 90 },
-      { name: "Canva", proficiency: 70 },
-      { name: "Adobe After Effects", proficiency: 80 },
+    content: [
+      { name: "Short-form Video Editing", proficiency: 90 },
+      { name: "CapCut", proficiency: 90 },
+      { name: "Adobe Premiere Pro", proficiency: 85 },
+      { name: "Canva", proficiency: 90 },
+      { name: "Copywriting & Hooks", proficiency: 85 },
     ],
-    development: [
-      { name: "HTML/CSS", proficiency: 95 },
-      { name: "JavaScript", proficiency: 80 },
-      { name: "React.js", proficiency: 80 },
-      { name: "Next.js", proficiency: 90 },
-      { name: "WordPress", proficiency: 20 },
+    systems: [
+      { name: "ChatGPT", proficiency: 90 },
+      { name: "Claude", proficiency: 90 },
+      { name: "Notion", proficiency: 85 },
+      { name: "Airtable", proficiency: 75 },
+      { name: "Automation & Workflows", proficiency: 80 },
     ],
   };
 
+  const stack = [
+    "ChatGPT",
+    "Claude",
+    "Notion",
+    "Airtable",
+    "Asana",
+    "Slack",
+    "Canva",
+    "CapCut",
+    "Lovable",
+    "Flowdesk",
+  ];
+
   return (
     <motion.section
-      id="services"
+      id="toolkit"
       initial="initial"
       whileInView="animate"
       viewport={{ once: true, amount: 0.2 }}
@@ -65,7 +78,7 @@ const ToolsSection = () => {
       <motion.div variants={staggerChildren} className="mx-auto max-w-5xl">
         <div className="mb-14 text-center">
           <p className="mb-4 text-xs font-medium uppercase tracking-[0.3em] text-violet-400/90">
-            Capabilities
+            Toolkit
           </p>
           <motion.h2
             variants={fadeIn}
@@ -78,10 +91,10 @@ const ToolsSection = () => {
         <div className="grid grid-cols-1 gap-14 md:grid-cols-2">
           <motion.div variants={fadeIn}>
             <h3 className="mb-8 text-sm font-medium uppercase tracking-[0.2em] text-neutral-400">
-              Design
+              Content &amp; Creative
             </h3>
             <div className="space-y-6">
-              {tools.design.map((tool) => (
+              {tools.content.map((tool) => (
                 <Skill key={tool.name} tool={tool} />
               ))}
             </div>
@@ -89,15 +102,30 @@ const ToolsSection = () => {
 
           <motion.div variants={fadeIn}>
             <h3 className="mb-8 text-sm font-medium uppercase tracking-[0.2em] text-neutral-400">
-              Development
+              AI, Tools &amp; Systems
             </h3>
             <div className="space-y-6">
-              {tools.development.map((tool) => (
+              {tools.systems.map((tool) => (
                 <Skill key={tool.name} tool={tool} />
               ))}
             </div>
           </motion.div>
         </div>
+
+        {/* Wider stack */}
+        <motion.div variants={fadeIn} className="mt-14 text-center">
+          <p className="mb-5 text-sm text-neutral-500">Also works with</p>
+          <div className="flex flex-wrap justify-center gap-2">
+            {stack.map((tool) => (
+              <span
+                key={tool}
+                className="rounded-full border border-white/10 bg-white/[0.03] px-4 py-1.5 text-sm text-neutral-300"
+              >
+                {tool}
+              </span>
+            ))}
+          </div>
+        </motion.div>
       </motion.div>
     </motion.section>
   );

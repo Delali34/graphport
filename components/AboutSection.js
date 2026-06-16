@@ -17,7 +17,13 @@ const staggerChildren = {
   },
 };
 
-const focus = ["Branding", "Graphic Design", "Web Design", "Social Media", "Motion"];
+const focus = [
+  "Short-form Video",
+  "Content Strategy",
+  "Social Media Growth",
+  "AI Workflows",
+  "Copywriting",
+];
 
 const AboutSection = () => {
   return (
@@ -44,10 +50,12 @@ const AboutSection = () => {
             variants={fadeIn}
             className="text-lg leading-relaxed text-neutral-300 sm:text-xl"
           >
-            I&apos;m a passionate creative designer with a keen eye for design,
-            aesthetics, and storytelling. My work is driven by the need to create
-            visually stunning and impactful experiences — across brand identities,
-            print, the web, and short-form video.
+            I&apos;m a content creator and short-form video editor who turns ideas
+            into content that reaches thousands. I run social accounts end to end —
+            strategy, production, publishing and growth — and I&apos;m AI-native,
+            using tools like ChatGPT and Claude to build fast, scalable content
+            systems. I move quickly, document what I build, and love helping
+            something grow from day one.
           </motion.p>
 
           <motion.div variants={fadeIn} className="mt-8 flex flex-wrap gap-2.5">

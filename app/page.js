@@ -3,11 +3,10 @@
 import React from "react";
 import HeroSection from "/components/HeroSection";
 import AboutSection from "/components/AboutSection";
-import WorksSection from "/components/WorksSection";
-import ToolsSection from "/components/ToolsSection";
-import WebsitesSection from "/components/WebsitesSection";
 import ReelsSection from "/components/ReelsSection";
 import SocialMediaSection from "/components/SocialMediaSection";
+import ToolsSection from "/components/ToolsSection";
+import WebsitesSection from "/components/WebsitesSection";
 import ContactSection from "/components/ContactSection";
 
 const Portfolio = () => {
@@ -40,11 +39,10 @@ const Portfolio = () => {
       <div className="bg-[#0a0a0b] font-sans">
         <HeroSection />
         <AboutSection />
-        <WorksSection />
         <ReelsSection />
+        <SocialMediaSection />
         <ToolsSection />
         <WebsitesSection />
-        <SocialMediaSection />
         <ContactSection />
       </div>
     </>

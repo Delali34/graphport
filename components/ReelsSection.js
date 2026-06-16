@@ -101,11 +101,14 @@ const filters = [
   { key: "linkedin", label: "LinkedIn" },
 ];
 
-const ReelCard = ({ item, onOpen }) => {
+const ReelCard = ({ item, index, onOpen }) => {
   const { label, Icon } = platformMeta[item.platform];
   return (
     <motion.button
-      variants={fadeIn}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.4, delay: (index % 4) * 0.06 }}
       onClick={() => onOpen(item)}
       whileHover={{ y: -4 }}
       className="group relative aspect-[9/16] w-full overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.07] to-white/[0.015] text-left transition-colors duration-300 hover:border-white/25"
@@ -286,17 +289,11 @@ const ReelsSection = () => {
         </motion.div>
 
         {/* Grid */}
-        <motion.div
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true, amount: 0.15 }}
-          variants={{ animate: { transition: { staggerChildren: 0.06 } } }}
-          className="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6 lg:grid-cols-4"
-        >
-          {visible.map((item) => (
-            <ReelCard key={item.id} item={item} onOpen={setSelected} />
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6 lg:grid-cols-4">
+          {visible.map((item, i) => (
+            <ReelCard key={item.id} item={item} index={i} onOpen={setSelected} />
           ))}
-        </motion.div>
+        </div>
       </div>
 
       <AnimatePresence>
